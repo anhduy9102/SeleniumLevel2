@@ -2,20 +2,48 @@
 
 
 ## 📋 Prerequisites
+Java JDK 11+
 
+Maven 3.6+
 
+- [Java JDK](https://www.oracle.com/asean/java/technologies/) (11+ or later recommended)
+- [Maven](https://maven.apache.org/) (comes with Java JDK)
 - Chrome browser (or other supported browsers)
+- Allure Commandline (optional, for report viewing)
 
 ## 📁 Project Structure
 
 ```
-├── assets/                  # Static assets
-├── docs/                    # Documentation
-├── fixtures/                # Test data and fixtures
-├── pages/                   # Page Object Model classes
-├── reporters/               # Custom reporters
-├── tests/                   # Test cases (main test directory)
-├── utils/                   # Utility functions
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   ├── common/
+│   │   │   │   ├── drivers/          # WebDriver management (DriverManager)
+│   │   │   │   ├── helpers/          # Helper utilities
+│   │   │   │   ├── model/            # Data models (if any)
+│   │   │   │   └── utils/            # Config and environment readers
+│   │   │   │       ├── ConfigReader.java
+│   │   │   │       └── EnvReader.java
+│   │   │   ├── core/
+│   │   │   │   ├── BasePage.java     # Page base class for POM
+│   │   │   │   ├── BaseTest.java     # Base class for tests (setup/teardown)
+│   │   │   │   └── ElementWrapper.java  # Element interaction abstraction
+│   │   │   └── pages/                # Page Object classes
+│   │   └── resources/
+│   │       ├── .env                  # Environment configuration
+│   │       ├── .env.example          # Template for .env file
+│   │       └── config.properties     # Global config file
+│   └── test/
+│       ├── java/
+│       │   └── tests/                # TestNG test cases
+│       └── resources/
+│           └── testng.xml            # Test suite definition
+├── allure-report/                    # Generated Allure reports
+├── allure-results/                   # Allure raw results
+├── pom.xml                           # Maven configuration file
+├── .gitignore                        # Ignored files for Git
+└── README.md                         # Project documentation
+
 
 ```
 
@@ -24,7 +52,7 @@
 1. **Install dependencies:**
 
    ```bash
-   
+   mvn clean install
    ```
 
 2. **Configure environment variables:**
@@ -34,7 +62,8 @@
 3. **Run all tests:**
 
    ```bash
-   
+   mvn clean test
+
    ```
 
    Run tests with tag:
@@ -44,7 +73,7 @@
    ```
 
    Or run a specific test file:
-
+   
    ```bash
   
    ```
@@ -76,15 +105,25 @@
 
 ## 🧩 Features
 
-- Modern Selenium setup with Java
-- Page Object Model for maintainable tests
-- Shadow DOM support
-- Parallel and cross-browser testing
-- Allure and HTML reporting
-- Report Portal integration (optional)
-- Example tests for login, shopping, shadow DOM, and more
+✅ Page Object Model (POM) structure
+✅ Environment configuration via .env
+✅ Selenium WebDriver manager
+✅ Cross-browser testing
+✅ Allure & HTML reports
+✅ TestNG parallel execution support
+✅ Reusable utilities for reading config & environment
+✅ Scalable for CI/CD integration (e.g., GitHub Actions, Jenkins)
 
 ## 🛠️ Useful Commands
+
+| Command                     | Description                   |
+| --------------------------- | ----------------------------- |
+| `mvn clean`                 | Clean previous builds         |
+| `mvn test`                  | Run all tests                 |
+| `mvn test -Dtest=ClassName` | Run specific test class       |
+| `mvn test -Dgroups=tag`     | Run by tag/group              |
+| `mvn allure:serve`          | Generate & open Allure report |
+| `mvn site`                  | Generate site documentation   |
 
 
 ## 📚 References

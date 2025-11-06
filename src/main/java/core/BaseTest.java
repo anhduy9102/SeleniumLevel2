@@ -16,6 +16,7 @@ public class BaseTest {
     public void setUp() {
         driver = DriverManager.getDriver();
         driver.manage().window().maximize();
+        driver.get("https://google.com");
 
     }
 
@@ -24,8 +25,8 @@ public class BaseTest {
         DriverManager.quitDriver();
     }
 
-    @Attachment(value = "Failure Screenshot", type = "image/png")
-    public byte[] saveScreenshot(WebDriver driver) {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
+//    @Attachment(value = "Failure Screenshot", type = "image/png")
+//    public byte[] saveScreenshot(WebDriver driver) {
+//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//    }
 }
