@@ -2,9 +2,6 @@
 
 
 ## 📋 Prerequisites
-Java JDK 11+
-
-Maven 3.6+
 
 - [Java JDK](https://www.oracle.com/asean/java/technologies/) (11+ or later recommended)
 - [Maven](https://maven.apache.org/) (comes with Java JDK)
